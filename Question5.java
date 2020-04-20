@@ -27,6 +27,28 @@ public class Question5
      */
      
     Scanner in = new Scanner(System.in);
-    
+    System.out.println("Enter a number (you will be entering this many numbers later):");
+    int num = in.nextInt();
+    int[] numList = new int[num];
+
+    while (num > 0) {
+      numList[--num] = in.nextInt();
+    }
+
+    int mode = 0;
+    int highestIterationCount = 0;
+    for (int i : numList) {
+      int iterationCount = 0;
+      for (int j : numList) {
+        if (i == j) {
+          iterationCount++;
+        }
+      }
+      if (iterationCount >= highestIterationCount)  {
+        mode = i;
+        highestIterationCount = iterationCount;
+      }
+    }
+    System.out.println("Mode: " + mode);
   }
 }
